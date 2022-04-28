@@ -2,12 +2,14 @@ package practica2.ejercicio05;
 
 public class FechaPrueba {
     public static void main(String[] args) {
-		Fecha hombreEnLaLuna = new Fecha(8, 12, 1969);
+		Fecha hombreEnLaLuna = new Fecha(1, 1, 1901);
         System.out.println(hombreEnLaLuna.toString());
         System.out.println(hombreEnLaLuna.díaSiguiente().toString());
         System.out.println(hombreEnLaLuna.toString());
         // testDíaSiguienteAño(1901);
+		testDíaSiguienteAño(1901);
 		testDíaSiguienteAño(2000);
+
 	
 
     }
@@ -22,16 +24,27 @@ public class FechaPrueba {
                 // System.out.println("ESTADO -->" + fecha.equals(fecha2));
                 // System.out.println(fecha == fecha2);
 
-                if (fecha.getMes() == 1) {
+                // if (fecha.getMes() == 1) {
+                //     System.out.println("FECHA ACTUAL --> " + fecha.toString());
+                //     System.out.println("FECHA SIGUIENTE  --> " + siguiente.toString()); 
+                //     System.out.println("FECHA ACTUAL --> " + fecha.toString());
+                //     System.out.println("----------------------------------------------");
+                // } 
+
+
+                if (fecha2.equals(fecha) == false) {
                     System.out.println("FECHA ACTUAL --> " + fecha.toString());
                     System.out.println("FECHA SIGUIENTE  --> " + siguiente.toString()); 
                     System.out.println("FECHA ACTUAL --> " + fecha.toString());
                     System.out.println("----------------------------------------------");
-                } 
+                }
+
+			// 	} else if (mes < 12) {
+
  
 
-			}
-				
+			// }
+            }
 		}
 	}
     

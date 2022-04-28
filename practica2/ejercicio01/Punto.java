@@ -34,6 +34,7 @@ public class Punto {
 
     public Punto desplazar(double desplazamientoX, double desplazamientoY){   
         return new Punto(this.x + desplazamientoX, this.y + desplazamientoY);
+        
     } 
 
     public double distancia(Punto otroPunto){ 
@@ -44,11 +45,16 @@ public class Punto {
         return "(" + String.format(Locale.US, "%.2f", this.getX()) + ", " + String.format(Locale.US, "%.2f", this.getY()) + ")";
     }
 
-    public boolean equals(Punto otroPunto){
-        if(this.x == otroPunto.x && this.y == otroPunto.y){
+    public boolean equals(Object otroObjeto){
+        if (this == otroObjeto) {
             return true;
         }
-        return false;
+        if (!(otroObjeto instanceof Punto)) {
+            return false;
+        } else {
+            Punto otroPunto = (Punto) otroObjeto;
+            return this.x == otroPunto.x && this.y == otroPunto.y;
+        }
     }
 }
 

@@ -124,7 +124,7 @@ public class TestFecha {
 				Fecha fecha = new Fecha(día, mes, año);
 				Fecha fecha2 = new Fecha(fecha);
 				Fecha siguiente = fecha.díaSiguiente();
-				// assertEquals("El método díaSiguiente no debe modificar la fecha original", fecha2, fecha);
+				assertEquals("El método díaSiguiente no debe modificar la fecha original", fecha2, fecha);
 				if (día < ndías) {
 					assertEquals("Mal día devuelto como siguiente de " + fecha, día + 1, siguiente.getDía());
 					assertEquals("Mal mes devuelto como siguiente de " + fecha, mes, siguiente.getMes());

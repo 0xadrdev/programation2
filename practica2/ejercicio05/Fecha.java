@@ -1,5 +1,7 @@
 package practica2.ejercicio05; 
 
+
+import practica2.ejercicio05.ExcepcionFechaInvalida;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -10,10 +12,9 @@ public class Fecha {
     private int año;
 
     public Fecha(int día, int mes, int año) throws ExcepcionFechaInvalida {
-        if (día < 0 || día > 31 || mes < 0 || mes > 12 || año < 0 ) {
+        if (día < 0 || mes < 1 || mes > 12 || año < 0 ) {
             throw new ExcepcionFechaInvalida();
-        }
-        
+        } 
         this.día = día;
         this.mes = mes;
         this.año = año; 
@@ -32,11 +33,15 @@ public class Fecha {
         return String.format(Locale.US, "%d", this.getDía()) + "/" + String.format(Locale.US, "%d", this.getMes()) + "/" + String.format(Locale.US, "%d", this.getAño());
     }
 
-    public boolean equals(Fecha otraFecha) {
-        if (this.día == otraFecha.día && this.mes == otraFecha.mes && this.año == otraFecha.año) {
-            return true;
-        } else {
+    public boolean equals(Object otroObjeto) {
+        if (this == otroObjeto) {
+            return true; 
+        }
+        if (!(otroObjeto instanceof Fecha)) {
             return false;
+        } else {       
+            Fecha otraFecha = (Fecha) otroObjeto; 
+            return this.día == otraFecha.día && this.mes == otraFecha.mes && año == otraFecha.año; 
         }
     }
 
@@ -65,7 +70,6 @@ public class Fecha {
                     return -1;
                 }
             }
-
         }
 
         // if (otraFecha.equals(this)) {
@@ -94,25 +98,24 @@ public class Fecha {
             return false;
         }
     }
-    public static int díasMes(int mes, int año) {
-
+    public static int díasMes(int mes, int año) throws ExcepcionFechaInvalida{
         if (mes < 0 || mes > 12 || año < 0 ) {
             throw new ExcepcionFechaInvalida();
         }
 
         int[] meses = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        
+
         if (añoBisiesto(año)) {
             meses[2] = 29;
         } else {
             meses[2] = 28;
         }
-
         return meses[mes];
 
     }
 
     public static Fecha hoy() {
+
         Calendar calendario = Calendar.getInstance();
         
         int día = calendario.get(Calendar.DAY_OF_MONTH);
@@ -122,6 +125,7 @@ public class Fecha {
         Fecha fecha = new Fecha(día, mes, año);
 
         return fecha;
+
     }
 
     public Fecha díaSiguiente() {

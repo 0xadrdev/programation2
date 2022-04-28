@@ -2,6 +2,7 @@ package practica2.ejercicio10;
 import practica2.ejercicio01.*;
 
 public class LineaPoligonal {
+
     private Punto[] linea;
     private int puntosValidos; 
 
@@ -29,14 +30,16 @@ public class LineaPoligonal {
     }
 
     public void quitar(int pos) {
-        for (int i = pos; i < this.linea.length - 1; i++) {
-            this.linea[i] = this.linea[i+1];
+        if (pos >= 0 && pos < this.puntosValidos) {
+            for (int i = pos; i < this.linea.length - 1; i++) {
+                this.linea[i] = this.linea[i+1];
+            }
+            this.puntosValidos--;
         }
-        this.puntosValidos--;
     }
 
     public void quitar(Punto punto) {
-        for (int i = 0; i < this.linea.length; i++) {
+        for (int i = 0; i < this.puntosValidos; i++) {
             if (this.linea[i].equals(punto)) {
                 this.quitar(i);
                 break;
@@ -45,9 +48,12 @@ public class LineaPoligonal {
     }
 
     public void trasladar(double desplazamientoX, double desplazamientoY) {
-        for (int i = 0; i < this.linea.length; i++) {
-            this.linea[i].desplazar(desplazamientoX, desplazamientoY);
+
+        for (int i = 0; i < puntosValidos; i++) {
+            linea[i] = linea[i].desplazar(desplazamientoX, desplazamientoY);
         }
+        
+
     }
 
     public double longitud() {
@@ -76,16 +82,19 @@ public class LineaPoligonal {
         if (cadena != "") {
             cadena += this.linea[this.puntosValidos - 1].toString();
         } 
-
         return cadena;
     } 
 
-    public boolean equals(LineaPoligonal otraLinea) {
-        if (otraLinea.puntosValidos != this.puntosValidos) {
+    public boolean equals(Object otroObjeto) {
+        if (this == otroObjeto){
+            return true;
+        }
+        if (!(otroObjeto instanceof LineaPoligonal)) {
             return false;
         } else {
+            LineaPoligonal otraLinea = (LineaPoligonal) otroObjeto;
             for (int i = 0; i < this.puntosValidos; i++) {
-                if (this.linea[i].equals(otraLinea.linea[i]) == false){
+                if (this.linea[i].equals(otraLinea.linea[i]) == false) {
                     return false;
                 }
             }
@@ -93,3 +102,4 @@ public class LineaPoligonal {
         }
     }
 }
+

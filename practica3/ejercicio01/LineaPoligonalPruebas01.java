@@ -1,4 +1,4 @@
-package practica2.ejercicio10; // Indica aquí el nombre del paquete que utilizas.
+package practica3.ejercicio01; // Indica aquí el nombre del paquete que utilizas.
 import practica2.ejercicio01.*;
 
 
@@ -89,6 +89,7 @@ public class LineaPoligonalPruebas01 {
         System.out.println("Comparamos con otra linea poligonal diferente");
         LineaPoligonal otraLinea = new LineaPoligonal();
         otraLinea.añadir(new Punto(100, 110));
+        System.out.println("ENTRO");
         otraLinea.añadir(new Punto(110, 110));
         otraLinea.añadir(new Punto(200, 200));
         sonIguales = miLinea.equals(otraLinea);

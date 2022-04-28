@@ -1,4 +1,4 @@
-package practica2.ejercicio10; // Indica aquí el nombre del paquete que utilizas.
+package practica3.ejercicio01; // Indica aquí el nombre del paquete que utilizas.
 import practica2.ejercicio01.*;
 
 public class LineaPoligonalPruebas02 {
