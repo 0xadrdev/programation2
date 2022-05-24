@@ -22,4 +22,7 @@ public class TrabajoImpresora {
     public String toString() {
         return this.idTrabajo + "/" + this.idUsuario;
     }
+
 }
+
+

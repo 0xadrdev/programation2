@@ -14,13 +14,10 @@ public class LineaPoligonal {
     public void añadir(Punto punto) {
         if (this.puntosValidos == this.linea.length) {
             Punto[] nuevaLinea = new Punto[this.linea.length * 2];
-
             for (int i = 0; i < this.linea.length; i++) {
                 nuevaLinea[i] = this.linea[i];
             }
-
             nuevaLinea[this.linea.length] = punto; 
-
             this.linea = nuevaLinea; 
             this.puntosValidos++;
         } else {

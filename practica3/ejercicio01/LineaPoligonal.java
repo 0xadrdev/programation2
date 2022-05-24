@@ -1,33 +1,21 @@
 package practica3.ejercicio01;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import practica2.ejercicio01.*;
 
 public class LineaPoligonal {
-    private LinkedList<Punto> linea;
+    private ArrayList<Punto> linea;
     private int puntosValidos; 
 
     public LineaPoligonal() {
-        this.linea = new LinkedList<Punto>();
+        this.linea = new ArrayList<Punto>();
         this.puntosValidos = 0; 
     }
 
     public void añadir(Punto punto) {
-        if (this.puntosValidos == this.linea.size()) {
-            LinkedList<Punto> nuevaLinea = new LinkedList<Punto>();
-
-            for (int i = 0; i < this.puntosValidos; i++) {
-                nuevaLinea.add(i, this.linea.get(i));
-            }
-
-            nuevaLinea.add(this.linea.size(), punto); 
-
-            this.linea = nuevaLinea; 
-            this.puntosValidos++;
-        } else {
-            this.linea.add(puntosValidos, punto); 
-            this.puntosValidos++;
-        }
+        this.linea.add(puntosValidos, punto); 
+        this.puntosValidos++;
     }
 
     public void quitar(int pos) {
@@ -40,6 +28,7 @@ public class LineaPoligonal {
     }
 
     public void quitar(Punto punto) {
+        
         for (int i = 0; i < this.puntosValidos; i++) {
             if (this.linea.get(i).equals(punto)) {
                 this.quitar(i);
@@ -67,6 +56,7 @@ public class LineaPoligonal {
         for (int i = 0; i < this.puntosValidos - 1; i++) {
             longitud += this.linea.get(i).distancia(this.linea.get(i+1));
         }
+
         return longitud;
     }
 
@@ -80,6 +70,7 @@ public class LineaPoligonal {
         for (int i = 0; i < this.puntosValidos - 1; i++) {
             cadena += this.linea.get(i).toString() + "--";
         }
+
         if (cadena != "") {
             cadena += this.linea.get(this.puntosValidos - 1).toString();
         } 
